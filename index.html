@@ -316,7 +316,7 @@
 
   <header>
     <div class="nav">
-      <a class="brand" href="#">Stansted <span>Airport Taxi</span></a>
+      <a class="brand" href="#booking">Stansted <span>Airport Taxi</span></a>
       <nav>
         <a href="#gatwick">Gatwick</a>
         <a href="#stratford">Stratford</a>
@@ -340,7 +340,7 @@
         <div class="field">📍 Pick-up location</div>
         <div class="field">✈️ Airport / destination</div>
         <div class="field">📅 Date & time</div>
-        <a class="booking-btn" href="#">Get a Quote</a>
+        <a class="booking-btn" href="#booking">Get a Quote</a>
       </div>
     </div>
   </section>
@@ -376,7 +376,7 @@
         <p>Taxi transfers can be particularly useful for families, business travellers, groups, elderly passengers, and anyone travelling during unsociable hours.</p>
         <p>Another major advantage is door-to-door transportation. Instead of travelling to a station first and then arranging another connection at the airport, you can normally be collected directly from your home, hotel, office, or another agreed location.</p>
       </section>
-      <section class="article-section">
+      <section class="article-section" id="gatwick">
         <h2>Gatwick South Terminal: What Passengers Should Know</h2>
         <p>Gatwick Airport is one of the UK&#x27;s busiest airports and serves a large number of domestic and international passengers. The airport has two main passenger terminals: North Terminal and South Terminal.</p>
         <p>If your flight departs from <strong>Gatwick South Terminal</strong>, checking your terminal before travelling is important. Arriving at the wrong terminal can create unnecessary stress, particularly when you have luggage or limited time before check-in.</p>
@@ -384,7 +384,7 @@
         <p>When arranging a transfer to Gatwick South Terminal, passengers should consider their flight departure time, expected road traffic, check-in requirements, and additional time for possible delays.</p>
         <p>Booking your journey in advance can also make airport travel easier because you know your transportation has been arranged before leaving home.</p>
       </section>
-      <section class="article-section">
+      <section class="article-section" id="stratford">
         <h2>Stratford to Heathrow: Planning Your Journey</h2>
         <p>The journey from <strong>Stratford to Heathrow</strong> connects East London with one of the UK&#x27;s most important international airports. Stratford is a major transport hub, but travelling across London with luggage can still be inconvenient.</p>
         <p>Public transport may require passengers to use multiple services depending on the exact starting point and destination terminal. For travellers carrying several bags, travelling with children, or catching a flight at an inconvenient time, a private taxi can offer a more comfortable alternative.</p>
@@ -392,7 +392,7 @@
         <p>Traffic conditions can influence the journey time, so it is sensible to allow additional time when travelling to an airport. Passengers should also consider the terminal from which their flight departs.</p>
         <p>With a pre-booked airport taxi, you can arrange a pickup time that gives you sufficient time to reach Heathrow, complete check-in, and pass through airport security.</p>
       </section>
-      <section class="article-section">
+      <section class="article-section" id="victoria">
         <h2>Victoria to Heathrow Airport Transfers</h2>
         <p>London Victoria is one of the capital&#x27;s most recognisable transport hubs and is popular with tourists, commuters, and visitors staying in central London.</p>
         <p>Travelling from <strong>Victoria to Heathrow Airport</strong> can be relatively straightforward by public transport, but passengers with luggage may prefer a direct taxi journey.</p>
@@ -401,7 +401,7 @@
         <p>For visitors staying near Victoria, a taxi can also provide a door-to-door service from their hotel entrance. This means they do not need to navigate underground stations or busy railway platforms with luggage.</p>
         <p>When booking a Victoria to Heathrow transfer, passengers should provide the correct pickup address, flight information where appropriate, and Heathrow terminal details. Accurate information helps make the transfer smoother.</p>
       </section>
-      <section class="article-section">
+      <section class="article-section" id="horsham">
         <h2>Horsham to Gatwick Airport: A Convenient Airport Route</h2>
         <p>Horsham is located in West Sussex and is relatively close to Gatwick Airport, making airport transfers an important part of travel for local residents and visitors.</p>
         <p>A <strong>Horsham to Gatwick Airport</strong> taxi can be a practical choice for passengers who want direct transportation without relying on public transport schedules.</p>
@@ -410,7 +410,7 @@
         <p>Families and groups may also find private airport transfers convenient because everyone can travel together rather than splitting into different transport options.</p>
         <p>When travelling from Horsham to Gatwick, it is important to leave enough time for traffic and airport procedures. Even a relatively short airport journey should be planned carefully because delays on the road can affect check-in and boarding.</p>
       </section>
-      <section class="article-section">
+      <section class="article-section" id="clapham">
         <h2>Clapham to Heathrow: Comfortable Travel Across London</h2>
         <p>Clapham is a popular South London area with excellent transport connections. However, travelling from Clapham to Heathrow can become less convenient when carrying luggage or travelling during busy periods.</p>
         <p>A <strong>Clapham to Heathrow</strong> taxi transfer provides a direct option for passengers who prefer to avoid multiple public transport connections.</p>
@@ -486,7 +486,7 @@
         <h2>Ready for a smoother airport journey?</h2>
         <p>Arrange your airport transfer in advance with Stansted Airport Taxi.</p>
       </div>
-      <a class="cta-btn" href="#">Book Your Taxi</a>
+      <a class="cta-btn" href="#booking">Book Your Taxi</a>
     </div>
   </section>
 
@@ -497,6 +497,32 @@
     </div>
     <div class="copyright">© 2026 Stansted Airport Taxi. All rights reserved.</div>
   </footer>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href');
+      if (!targetId || targetId === '#') return;
+      const target = document.querySelector(targetId);
+      if (!target) return;
+
+      e.preventDefault();
+      const header = document.querySelector('header');
+      const offset = (header ? header.offsetHeight : 0) + 15;
+      const y = target.getBoundingClientRect().top + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: y,
+        behavior: 'smooth'
+      });
+
+      history.replaceState(null, '', targetId);
+    });
+  });
+});
+</script>
 
 </body>
 </html>
